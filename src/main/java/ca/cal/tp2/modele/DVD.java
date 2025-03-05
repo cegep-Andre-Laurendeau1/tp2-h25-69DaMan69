@@ -7,13 +7,19 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 @DiscriminatorValue("DVD")
 public class DVD extends Document {
     public String director;
     public int duree;
     public String rating;
+
+    public DVD(String titre, String directeur, int duree, String rating) {
+        super(titre);
+        this.director = directeur;
+        this.duree = duree;
+        this.rating = rating;
+    }
 
     public String getDirector() {
         return director;

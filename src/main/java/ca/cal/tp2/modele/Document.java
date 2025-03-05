@@ -25,4 +25,9 @@ public abstract class Document {
         this.titre = titre;
         this.nombreExemplaires = nombreExemplaires;
     }
+
+    public Document(String titre) {
+        this.titre = titre;
+        this.nombreExemplaires = 0;
+    }
 }

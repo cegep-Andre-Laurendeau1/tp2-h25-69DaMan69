@@ -15,7 +15,7 @@ import lombok.Setter;
 @DiscriminatorColumn(name = "Type d'utilisateur")
 public abstract class Utilisateur {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int userID;
 
     private String name;

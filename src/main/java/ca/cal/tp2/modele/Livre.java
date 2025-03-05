@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 @DiscriminatorValue("Livre")
 public class Livre extends Document {
@@ -14,6 +13,15 @@ public class Livre extends Document {
     private String auteur;
     private String editeur;
     private int nombrePages;
+
+    public Livre(String titre, String auteur, String isbn, String editeur, int nombrepages) {
+        super(titre);
+        this.auteur = auteur;
+        this.ISBN = isbn;
+        this.editeur = editeur;
+        this.nombrePages = nombrepages;
+    }
+
 
     public String getISBN() {
         return ISBN;
