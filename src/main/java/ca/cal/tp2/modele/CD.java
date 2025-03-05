@@ -1,10 +1,41 @@
-package ca.cal.tp1.modele;
+package ca.cal.tp2.modele;
 
-import lombok.Data;
 
-@Data
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@DiscriminatorValue("CD")
 public class CD extends Document {
-    public final String artiste;
-    public final int duree;
-    public final String genre;
+    public String artiste;
+    public int duree;
+    public String genre;
+
+    public String getArtiste() {
+        return artiste;
+    }
+
+    public void setArtiste(String artiste) {
+        this.artiste = artiste;
+    }
+
+    public int getDuree() {
+        return duree;
+    }
+
+    public void setDuree(int duree) {
+        this.duree = duree;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 }

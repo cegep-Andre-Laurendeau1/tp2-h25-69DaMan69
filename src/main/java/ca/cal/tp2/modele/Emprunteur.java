@@ -1,7 +1,16 @@
-package ca.cal.tp1.modele;
+package ca.cal.tp2.modele;
 
-import lombok.Data;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
-@Data
+@Entity
+@NoArgsConstructor
+@DiscriminatorValue("E")
 public class Emprunteur extends Utilisateur{
+public Emprunteur(String name,String email,String phonenumber){
+    super(name,email,phonenumber);
+}
+
 }
