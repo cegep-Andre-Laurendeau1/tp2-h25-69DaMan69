@@ -22,7 +22,6 @@ public abstract class Document {
     private  int nombreExemplaires;
 
     public Document(String titre, int nombreExemplaires) {
-        this.documentID = documentID;
         this.titre = titre;
         this.nombreExemplaires = nombreExemplaires;
     }
