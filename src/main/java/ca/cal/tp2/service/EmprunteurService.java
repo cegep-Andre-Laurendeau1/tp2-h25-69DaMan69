@@ -24,17 +24,5 @@ public class EmprunteurService{
     public void ajoutEmprunteur(String nom, String email, String phonenumber) {
         utilisateurRepository.save(new Emprunteur(nom, email, phonenumber));
     }
-
-    public void ajoutLivre(String titre, String auteur, String isbn, String editeur, int nombrepages) {
-        livreRepository.save(new Livre(titre, auteur, isbn, editeur, nombrepages));
-    }
-
-    public void ajoutCD(String titre, String artiste, int duree, String genre) {
-        cdRepository.save(new CD(titre, artiste, duree, genre));
-    }
-
-    public void ajoutDVD(String titre, String directeur, int duree, String rating) {
-        dvdRepository.save(new DVD(titre, directeur, duree, rating));
-    }
-
+    
 }
