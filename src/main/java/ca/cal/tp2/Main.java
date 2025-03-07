@@ -92,6 +92,13 @@ public class Main {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        System.out.println("-------------------------------------------------------------------------------");
+
+        try {
+            emprunteurService.voirEmprunts("test");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         Thread.currentThread().join();
     }

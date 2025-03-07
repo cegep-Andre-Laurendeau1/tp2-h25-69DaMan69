@@ -32,4 +32,11 @@ public class Emprunt {
         this.emprunteur = emprunteur;
         this.empuntDetails = empuntDetails;
     }
+
+    @Override
+    public String toString() {
+        return "Emprunt{" +
+                "empuntDetails= " + empuntDetails +
+                '}';
+    }
 }

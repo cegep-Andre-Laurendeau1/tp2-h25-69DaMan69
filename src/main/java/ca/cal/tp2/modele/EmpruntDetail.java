@@ -31,4 +31,10 @@ public class EmpruntDetail {
         this.status = status;
         this.document = document;
     }
+
+    @Override
+    public String toString() {
+        return  document + ", dateRetourPrevue= " + dateRetourPrevue +
+                ", status= '" + status + '\'';
+    }
 }

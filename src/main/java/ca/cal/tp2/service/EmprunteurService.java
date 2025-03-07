@@ -78,4 +78,12 @@ public class EmprunteurService{
         }
         utilisateurRepository.emprunterpart2(empruntDetails, idutilisateur);
     }
+
+    public void voirEmprunts(String email){
+       Emprunteur emprunteur = utilisateurRepository.findById(utilisateurRepository.getid(email));
+       List<Emprunt> emprunts = utilisateurRepository.getEmprunts(emprunteur);
+         for(Emprunt emprunt: emprunts){
+              System.out.println(emprunt);
+         }
+    }
 }

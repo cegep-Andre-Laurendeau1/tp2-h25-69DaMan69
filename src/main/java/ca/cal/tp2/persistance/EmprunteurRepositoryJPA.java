@@ -77,5 +77,22 @@ public class EmprunteurRepositoryJPA implements RepositoryParent<Emprunteur> {
         }
     }
 
+    public List<Emprunt> getEmprunts(Emprunteur emprunteur) {
+        try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
+            TypedQuery<Emprunt> query = entityManager.createQuery(
+                    "SELECT e FROM Emprunt e WHERE e.emprunteur = :emprunteur AND e.status LIKE :status", Emprunt.class);
+            query.setParameter("emprunteur", emprunteur);
+            query.setParameter("status", "%emprunté%");
+            List<Emprunt> emprunts = query.getResultList();
+            for (Emprunt emprunt : emprunts) {
+                emprunt.getEmpuntDetails().size();
+            }
+            return emprunts;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
 }

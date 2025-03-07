@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -44,11 +43,9 @@ public abstract class Document {
 
     @Override
     public String toString() {
-        return "Document{" +
-                "documentID=" + documentID +
-                ", titre='" + titre + '\'' +
-                ", nombreExemplaires=" + nombreExemplaires +
-                ", anneePublication=" + anneePublication +
-                '}';
+        return "documentID= " + documentID +
+                ", titre= '" + titre + '\'' +
+                ", nombreExemplaires= " + nombreExemplaires +
+                ", anneePublication= " + anneePublication;
     }
 }
