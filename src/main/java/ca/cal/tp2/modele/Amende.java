@@ -1,12 +1,26 @@
-package ca.cal.tp1.modele;
+package ca.cal.tp2.modele;
 
-import lombok.Data;
 
-import java.sql.Date;
-@Data
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDate;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Amende {
-    public final int fineID;
-    public final double montant;
-    public final Date dateCreation;
-    public final boolean status;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int fineID;
+
+    private double montant;
+    private LocalDate dateCreation;
+    private boolean status;
+
+    @ManyToOne
+    private Emprunteur emprunteur;
 }

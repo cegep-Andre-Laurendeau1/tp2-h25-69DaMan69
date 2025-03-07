@@ -21,16 +21,5 @@ public class EmprunteurRepositoryJPA implements RepositoryParent<Emprunteur> {
         }
     }
 
-    @Override
-    public Emprunteur findByname(String name) {
-        try(EntityManager entityManager = entityManagerFactory.createEntityManager()) {
-            TypedQuery<Emprunteur> query = entityManager.createQuery("SELECT e FROM Emprunteur e WHERE e.name = :name", Emprunteur.class);
-            query.setParameter("name", name);
-            return query.getSingleResult();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
 
 }

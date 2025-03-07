@@ -5,6 +5,9 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import java.time.LocalDate;
 
 @Entity
 @NoArgsConstructor
@@ -14,8 +17,8 @@ public class DVD extends Document {
     public int duree;
     public String rating;
 
-    public DVD(String titre, String directeur, int duree, String rating) {
-        super(titre);
+    public DVD(String titre, LocalDate anneePublication, String directeur, int duree, String rating) {
+        super(titre, anneePublication);
         this.director = directeur;
         this.duree = duree;
         this.rating = rating;

@@ -20,7 +20,8 @@ public class PreposeService {
         utilisateurRepository.save(new Prepose(nom, email, phonenumber));
     }
 
-    public void entreNouveauDocument(Document document){
+    public void entreNouveauDocument(Document document,int quantite) {
+        document.setNombreExemplaires(quantite);
         if(document instanceof Livre){
             livreRepository.save((Livre) document);
         }else if(document instanceof CD){

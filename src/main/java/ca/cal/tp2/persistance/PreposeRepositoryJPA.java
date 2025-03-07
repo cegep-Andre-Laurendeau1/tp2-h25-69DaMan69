@@ -20,15 +20,4 @@ public class PreposeRepositoryJPA implements RepositoryParent<Prepose>{
             throw new RuntimeException(e);
         }
     }
-
-    @Override
-    public Prepose findByname(String name) {
-        try(EntityManager entityManager = entityManagerFactory.createEntityManager()) {
-            TypedQuery<Prepose> query = entityManager.createQuery("SELECT e FROM Prepose e WHERE e.name = :name", Prepose.class);
-            query.setParameter("name", name);
-            return query.getSingleResult();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

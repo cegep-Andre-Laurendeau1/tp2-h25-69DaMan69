@@ -8,7 +8,9 @@
     <name>tp2</name>
     <description>tp2</description>
     <properties>
-        <java.version>23</java.version>
+        <maven.compiler.source>23</maven.compiler.source>
+        <maven.compiler.target>23</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
         <dependency>
@@ -28,6 +30,4 @@
             <version>1.18.36</version>
         </dependency>
     </dependencies>
-
-
 </project>

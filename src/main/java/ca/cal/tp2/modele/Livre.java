@@ -4,6 +4,9 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import java.time.LocalDate;
 
 @Entity
 @NoArgsConstructor
@@ -14,8 +17,8 @@ public class Livre extends Document {
     private String editeur;
     private int nombrePages;
 
-    public Livre(String titre, String auteur, String isbn, String editeur, int nombrepages) {
-        super(titre);
+    public Livre(String titre, LocalDate anneePublication, String auteur, String isbn, String editeur, int nombrepages) {
+        super(titre, anneePublication);
         this.auteur = auteur;
         this.ISBN = isbn;
         this.editeur = editeur;
