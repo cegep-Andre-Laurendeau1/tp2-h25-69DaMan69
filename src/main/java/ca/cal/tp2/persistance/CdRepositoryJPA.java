@@ -24,19 +24,6 @@ public class CdRepositoryJPA implements DocumentRepository<CD> {
     }
 
 
-    @Override
-    public int disponibilite(String titre) {
-        try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
-            TypedQuery<CD> query = entityManager.createQuery("SELECT c FROM CD c WHERE c.titre = :titre", CD.class);
-            query.setParameter("titre", titre);
-            CD cd = query.getSingleResult();
-            return cd.getNombreExemplaires();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
     public List<CD> findByArtiste (String artiste) {
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
             TypedQuery<CD> query = entityManager.createQuery("SELECT c FROM CD c WHERE c.artiste = :artiste", CD.class);

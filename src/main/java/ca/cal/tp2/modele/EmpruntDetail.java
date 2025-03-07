@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-public class EmpuntDetail {
+public class EmpruntDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int lineItemID;
@@ -23,9 +23,12 @@ public class EmpuntDetail {
     @ManyToOne
     public Emprunt emprunt;
 
-    public EmpuntDetail(LocalDate dateRetourPrevue, LocalDate dateRetourActuelle, String status) {
+    @ManyToOne
+    public Document document;
+
+    public EmpruntDetail(LocalDate dateRetourPrevue, String status, Document document) {
         this.dateRetourPrevue = dateRetourPrevue;
-        this.dateRetourActuelle = dateRetourActuelle;
         this.status = status;
+        this.document = document;
     }
 }

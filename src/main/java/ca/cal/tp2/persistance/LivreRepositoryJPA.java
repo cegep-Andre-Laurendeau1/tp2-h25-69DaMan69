@@ -23,17 +23,6 @@ public class LivreRepositoryJPA implements DocumentRepository<Livre> {
         }
     }
 
-    @Override
-    public int disponibilite(String titre) {
-        try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
-            TypedQuery<Livre> query = entityManager.createQuery("SELECT l FROM Livre l WHERE l.titre = :titre", Livre.class);
-            query.setParameter("titre", titre);
-            Livre livre = query.getSingleResult();
-            return livre.getNombreExemplaires();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public List<Livre> findByAuteur(String auteur) {
         try(EntityManager entityManager = entityManagerFactory.createEntityManager()) {

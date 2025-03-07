@@ -9,6 +9,7 @@ import ca.cal.tp2.service.PreposeService;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws SQLException, InterruptedException {
@@ -16,7 +17,7 @@ public class Main {
         EmprunteurService emprunteurService = new EmprunteurService(new EmprunteurRepositoryJPA(), new LivreRepositoryJPA(), new CdRepositoryJPA(),  new DvdRepositoryJPA(), new DocumentRepositoryJPA());
         PreposeService preposeService = new PreposeService(new PreposeRepositoryJPA(), new LivreRepositoryJPA(), new CdRepositoryJPA(),  new DvdRepositoryJPA());
         try{
-            emprunteurService.ajoutEmprunteur("Daniel", "Lemay", "514-221-4441");
+            emprunteurService.ajoutEmprunteur("Daniel Khalil", "test", "514-221-4441");
         } catch (Exception e){
             System.out.println("erreur bd: " + e.getMessage());
         }
@@ -34,7 +35,7 @@ public class Main {
         }
 
         try {
-            preposeService.entreNouveauDocument(new CD("The Wall", LocalDate.of(2007,5,1),"Pink Floyd", 125, "Fantasy"), 5);
+            preposeService.entreNouveauDocument(new CD("The Wall", LocalDate.of(2007,5,1),"Pink Floyd", 125, "Fantasy"), 0);
         } catch (Exception e) {
             System.out.println("erreur bd: " + e.getMessage());
         }
@@ -82,6 +83,12 @@ public class Main {
 
         try {
             emprunteurService.recherchepardirector("Gorge Ford");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            emprunteurService.emprunterDocument("test", List.of(2, 1, 52));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

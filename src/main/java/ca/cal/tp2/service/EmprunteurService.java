@@ -4,16 +4,18 @@ import ca.cal.tp2.modele.*;
 import ca.cal.tp2.persistance.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class EmprunteurService{
-    private final RepositoryParent<Emprunteur> utilisateurRepository;
+    private final EmprunteurRepositoryJPA utilisateurRepository;
     private final LivreRepositoryJPA livreRepository;
     private final CdRepositoryJPA cdRepository ;
     private final DvdRepositoryJPA dvdRepository;
     private DocumentRepositoryJPA documentRepository;
 
-     public EmprunteurService(RepositoryParent<Emprunteur> utilisateurRepository, LivreRepositoryJPA livreRepository, CdRepositoryJPA cdRepository, DvdRepositoryJPA dvdRepository, DocumentRepositoryJPA documentRepository) {
+     public EmprunteurService(EmprunteurRepositoryJPA utilisateurRepository, LivreRepositoryJPA livreRepository, CdRepositoryJPA cdRepository, DvdRepositoryJPA dvdRepository, DocumentRepositoryJPA documentRepository) {
          this.utilisateurRepository = utilisateurRepository;
          this.livreRepository = livreRepository;
          this.cdRepository = cdRepository;
@@ -60,5 +62,20 @@ public class EmprunteurService{
         for (DVD dvd : dvdRepository.findByDirector(director)) {
             System.out.println(dvd);
         }
+    }
+
+    public void emprunterDocument(String email, List<Integer> idDocuments){
+        int idutilisateur = utilisateurRepository.getid(email);
+        List<EmpruntDetail> empruntDetails = new ArrayList<>();
+        for(int document: idDocuments){
+            if(documentRepository.findById(document).getNombreExemplaires() > 0){
+                EmpruntDetail empruntDetail = utilisateurRepository.emprunterpart1(documentRepository.findById(document));
+                empruntDetails.add(empruntDetail);
+                documentRepository.emprunter(documentRepository.findById(document), empruntDetail);
+            }else {
+                System.out.println("Le document \" " + documentRepository.findById(document).getTitre() + " \" n'est pas disponible");
+            }
+        }
+        utilisateurRepository.emprunterpart2(empruntDetails, idutilisateur);
     }
 }

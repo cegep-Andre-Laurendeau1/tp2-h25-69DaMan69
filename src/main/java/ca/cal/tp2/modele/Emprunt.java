@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -25,10 +24,12 @@ public class Emprunt {
     private Emprunteur emprunteur;
 
     @OneToMany(mappedBy = "emprunt", cascade = CascadeType.ALL)
-    private List<EmpuntDetail> empuntDetails;
+    private List<EmpruntDetail> empuntDetails;
 
-    public Emprunt(LocalDate dateEmprunt, String status) {
+    public Emprunt(LocalDate dateEmprunt, String status, Emprunteur emprunteur, List<EmpruntDetail> empuntDetails) {
         this.dateEmprunt = dateEmprunt;
         this.status = status;
+        this.emprunteur = emprunteur;
+        this.empuntDetails = empuntDetails;
     }
 }

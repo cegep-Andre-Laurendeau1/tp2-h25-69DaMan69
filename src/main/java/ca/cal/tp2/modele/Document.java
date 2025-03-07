@@ -7,12 +7,12 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "Typedocument")
@@ -27,6 +27,9 @@ public abstract class Document {
 
     private LocalDate anneePublication;
 
+    @OneToMany(mappedBy = "document", cascade = CascadeType.ALL)
+    List<EmpruntDetail> empruntDetails;
+
     public Document(String titre, int nombreExemplaires, LocalDate anneePublication) {
         this.titre = titre;
         this.nombreExemplaires = nombreExemplaires;
@@ -37,5 +40,15 @@ public abstract class Document {
         this.titre = titre;
         this.anneePublication = anneePublication;
         this.nombreExemplaires = 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Document{" +
+                "documentID=" + documentID +
+                ", titre='" + titre + '\'' +
+                ", nombreExemplaires=" + nombreExemplaires +
+                ", anneePublication=" + anneePublication +
+                '}';
     }
 }

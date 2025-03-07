@@ -23,17 +23,6 @@ public class DvdRepositoryJPA implements DocumentRepository<DVD> {
         }
     }
 
-    @Override
-    public int disponibilite(String titre) {
-        try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
-            TypedQuery<DVD> query = entityManager.createQuery("SELECT d FROM DVD d WHERE d.titre = :titre", DVD.class);
-            query.setParameter("titre", titre);
-            DVD dvd = query.getSingleResult();
-            return dvd.getNombreExemplaires();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public List<DVD> findByDirector(String director) {
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
