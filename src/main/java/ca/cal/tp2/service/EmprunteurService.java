@@ -13,7 +13,7 @@ public class EmprunteurService{
     private final LivreRepositoryJPA livreRepository;
     private final CdRepositoryJPA cdRepository ;
     private final DvdRepositoryJPA dvdRepository;
-    private DocumentRepositoryJPA documentRepository;
+    private final DocumentRepositoryJPA documentRepository;
 
      public EmprunteurService(EmprunteurRepositoryJPA utilisateurRepository, LivreRepositoryJPA livreRepository, CdRepositoryJPA cdRepository, DvdRepositoryJPA dvdRepository, DocumentRepositoryJPA documentRepository) {
          this.utilisateurRepository = utilisateurRepository;

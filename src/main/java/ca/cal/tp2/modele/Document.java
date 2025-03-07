@@ -29,12 +29,6 @@ public abstract class Document {
     @OneToMany(mappedBy = "document", cascade = CascadeType.ALL)
     List<EmpruntDetail> empruntDetails;
 
-    public Document(String titre, int nombreExemplaires, LocalDate anneePublication) {
-        this.titre = titre;
-        this.nombreExemplaires = nombreExemplaires;
-        this.anneePublication = anneePublication;
-    }
-
     public Document(String titre, LocalDate anneePublication) {
         this.titre = titre;
         this.anneePublication = anneePublication;
